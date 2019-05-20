@@ -14,8 +14,6 @@ public class CPSPackParserTest {
         parser = new CPSPackParser();
     }
 
-    //Optional[CPSPack(defendantId=DefendantId(croNumber=12345/12W, pncNumber=18/123456Z), convictionSummary=ConvictionSummary(convictionCount=20, offenceCount=100, dateOfFirstConviction=23/01/05, dateOfLastConviction=22/12/18, summary=[ConvictionGroup(count=1, description=OFFENCES AGAINST THE PERSON, yearDates=(2017) ), ConvictionGroup(count=2, description=OFFENCES AGAINST PROPERTY, yearDates=(2005-2017) ), ConvictionGroup(count=3, description=THEFT AND KINDRED OFFENCES, yearDates=(2005-2011) ), ConvictionGroup(count=4, description=PUBLIC DISORDER OFFENCES, yearDates=(2007-2017) ), ConvictionGroup(count=12, description=OFFENCES RELATING TO POLICE/COURTS/PRISONS, yearDates=(2005-2018) ), ConvictionGroup(count=13, description=MISCELLANEOUS OFFENCES, yearDates=(2005-2018) )]))]
-
     @Test
     public void extractsCroNumberFromPreConvictions() {
         assertThat(parser.extractCPSPack(aCpsPack()).orElseThrow(this::error).getDefendantId().getCroNumber())

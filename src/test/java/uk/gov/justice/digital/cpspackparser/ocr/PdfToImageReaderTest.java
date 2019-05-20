@@ -3,7 +3,6 @@ package uk.gov.justice.digital.cpspackparser.ocr;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.junit.Before;
 import org.junit.Test;
-import sun.jvm.hotspot.utilities.AssertionFailure;
 
 import java.io.IOException;
 
@@ -20,7 +19,7 @@ public class PdfToImageReaderTest {
     @Test
     public void extractsTextFromPdf() throws IOException {
         try (final PDDocument document = PDDocument.load(getClass().getResourceAsStream("/imageInPdf.pdf"))) {
-            assertThat(imageReader.toText(document).orElseThrow(() -> new AssertionFailure("Can not read PDF"))).contains("Why do we collect information?");
+            assertThat(imageReader.toText(document).orElseThrow(() -> new AssertionError("Can not read PDF"))).contains("Why do we collect information?");
         }
     }
 }
