@@ -70,8 +70,8 @@ jobs:
 
       - persist_to_workspace:
           root: .
-        paths:
-          - build
+          paths:
+            - build
 
   push_to_ecs:
     <<: *defaults
