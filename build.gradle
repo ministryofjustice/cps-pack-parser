@@ -1,0 +1,57 @@
+import org.apache.tools.ant.taskdefs.condition.Os
+
+plugins {
+    id 'org.springframework.boot' version '2.1.4.RELEASE'
+    id 'java'
+}
+
+ext {
+
+    if (Os.isFamily(Os.FAMILY_UNIX)) {
+        os = 'linux'
+    }
+    if (Os.isFamily(Os.FAMILY_MAC)) {
+        os = 'macosx'
+    }
+    if (Os.isFamily(Os.FAMILY_WINDOWS)) {
+        os = 'windows'
+    }
+    arch = System.getProperty("os.arch");
+
+    if(arch == 'amd64'){
+        arch = 'x86_64'
+    }
+    opencvBinaryClassifer = os+'-'+arch;
+
+}
+
+
+apply plugin: 'io.spring.dependency-management'
+
+group = 'uk.gov.justice.digital'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    compileOnly 'org.projectlombok:lombok'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox', version: '2.0.15'
+    compile group: 'org.apache.pdfbox', name: 'pdfbox-tools', version: '2.0.15'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'tesseract', version: '4.0.0-1.4.4'
+    compile group: 'org.bytedeco.javacpp-presets', name: 'tesseract', version: '4.0.0-1.4.4', classifier: opencvBinaryClassifer
+    compile group: 'org.bytedeco.javacpp-presets', name: 'leptonica', version: '1.77.0-1.4.4', classifier: opencvBinaryClassifer
+
+    runtimeOnly 'org.springframework.boot:spring-boot-devtools'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
