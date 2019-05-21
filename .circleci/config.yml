@@ -131,3 +131,6 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy_dev:
+          requires:
+            - push_to_ecs
