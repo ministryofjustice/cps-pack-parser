@@ -27,15 +27,15 @@ public class ParserService {
         this.pdfToImageReader = pdfToImageReader;
     }
 
-    public Optional<CPSPack> parse(InputStream cpsPackInputStream) {
+    public Optional<CPSPack> parse(InputStream cpsPackInputStream) throws IOException {
         try (val document = PDDocument.load(cpsPackInputStream)) {
             return toText(document)
                     .map(cpsPackParser::extractCPSPack)
                     .orElseGet(() -> pdfToImageReader.toText(document).flatMap(cpsPackParser::extractCPSPack));
         } catch (IOException e) {
             log.error("Unable to ready PDF", e);
+            throw e;
         }
-        return Optional.empty();
     }
 
 
