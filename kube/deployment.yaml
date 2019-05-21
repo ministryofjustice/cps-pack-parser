@@ -25,7 +25,7 @@ spec:
           image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/probation-services/cps-pack-parser:1.1
           resources:
             limits:
-              memory: "2000Mi"
+              memory: "4000Mi"
               cpu: "2000m"
             requests:
               memory: "2000Mi"
