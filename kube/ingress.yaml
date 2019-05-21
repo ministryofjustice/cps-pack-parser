@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: cps-pack-parser-service
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  tls:
+    - hosts:
+      - cps-pack-parser.apps.cloud-platform-live-0.k8s.integration.dsd.io
+  rules:
+    - host: cps-pack-parser.apps.cloud-platform-live-0.k8s.integration.dsd.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: cps-pack-parser-service
+              servicePort: 8000

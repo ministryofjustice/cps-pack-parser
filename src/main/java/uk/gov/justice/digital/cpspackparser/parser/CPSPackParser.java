@@ -19,7 +19,6 @@ import static java.util.stream.Collectors.toList;
 @Component
 public class CPSPackParser {
     public Optional<CPSPack> extractCPSPack(String cpsPack) {
-        System.err.println(cpsPack);
         val maybeDefendantId = extractDefendantId(cpsPack);
         val maybeDConvictionSummary = extractConvictionSummary(cpsPack);
 
