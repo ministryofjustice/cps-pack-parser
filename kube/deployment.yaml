@@ -23,6 +23,13 @@ spec:
       containers:
         - name: cps-pack-parser
           image: 926803513772.dkr.ecr.eu-west-1.amazonaws.com/probation-services/cps-pack-parser:1.1
+          resources:
+            limits:
+              memory: "2000Mi"
+              cpu: "2000m"
+            requests:
+              memory: "1000Mi"
+              cpu: "1000m"
           ports:
             - containerPort: 8000
           env:
