@@ -5,13 +5,9 @@ metadata:
   labels:
     app: cps-pack-parser
 spec:
-  replicas: 2
+  replicas: 1
   revisionHistoryLimit: 2
   minReadySeconds: 10
-  strategy:
-    rollingUpdate:
-      maxSurge: 1
-      maxUnavailable: 1
   selector:
     matchLabels:
       app: cps-pack-parser-app
