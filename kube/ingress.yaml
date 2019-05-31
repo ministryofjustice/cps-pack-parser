@@ -7,9 +7,9 @@ metadata:
 spec:
   tls:
     - hosts:
-      - cps-pack-parser.apps.cloud-platform-live-0.k8s.integration.dsd.io
+      - cps-pack-parser.apps.live-1.cloud-platform.service.justice.gov.uk
   rules:
-    - host: cps-pack-parser.apps.cloud-platform-live-0.k8s.integration.dsd.io
+    - host: cps-pack-parser.apps.live-1.cloud-platform.service.justice.gov.uk
       http:
         paths:
           - path: /
