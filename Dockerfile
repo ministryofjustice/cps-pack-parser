@@ -9,10 +9,10 @@ WORKDIR /app
 
 COPY build/libs/cps-pack-parser-*.jar /app/cps-pack-parser.jar
 
-COPY tessdata/ /tessdata/
+COPY tessdata/ /app/tessdata/
 
 RUN chown -R appuser:appgroup /app
-RUN chown -R appuser:appgroup /tessdata
+RUN chown -R appuser:appgroup /app/tessdata
 
 USER 2000
 
